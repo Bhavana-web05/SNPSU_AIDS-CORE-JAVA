@@ -36,7 +36,6 @@ public class LLStack {
         }
         int poppedValue = top.data;
         top = top.next;
-        size--;
         return poppedValue;
     }
 
