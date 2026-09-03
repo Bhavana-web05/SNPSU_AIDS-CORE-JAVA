@@ -70,11 +70,31 @@ class BinarySearchTree {
          } else if (key > root.data) {
              root.right = removeRec(root.right, key);
          } else {
-
+             // u found the node to be deleting
+             //Cae 1 Node with 0 or 1child
+             if (root.left == null ){
+                 return root.right;
+             }else if(root.right == null){
+                 return root.left;
+             }
+             //case2 Node with 2children
+             Node successor = findsuccessor(root.right);
+             root.data = successor.data;
+             root.right = removeRec(root.right, successor.data);
          }
+         return root;
+
+     }
+     private  Node findsuccessor(Node node){
+        while(node.left != null){
+            node = node.left;
+        }return node;
+
      }
      void remove(int key){
         root = removeRec(root,key);
+
+
 
      }
 
